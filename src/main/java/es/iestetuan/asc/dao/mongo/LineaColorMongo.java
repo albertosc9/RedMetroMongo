@@ -7,10 +7,7 @@ import java.util.List;
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 import es.iestetuan.asc.dao.IMongo;
 import es.iestetuan.asc.dao.utilities.MongoCliente;
@@ -25,13 +22,12 @@ public class LineaColorMongo implements IMongo{
 	
 	public void crear(LineaJSON linea) {
 		// TODO Auto-generated method stub
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 		
-		String nombreBaseDatos="LineaDB";
-		MongoDatabase baseDatosMongDB= mongoClient.getDatabase(nombreBaseDatos);
 		
-		String nombreColeccion="LineaColeccion";
-		MongoCollection<Document> coleccionEmpleado = baseDatosMongDB.getCollection(nombreColeccion);
+        MongoCliente mongo = new MongoCliente();
+		
+		
+		MongoCollection<Document> coleccionEmpleado = mongo.getDocumento();
 		
 		Document documentolinea =new Document("_id", linea.getCodigoLinea())
 				.append("nombre_corto", linea.getNombreCorto())
@@ -49,13 +45,11 @@ public class LineaColorMongo implements IMongo{
 	}
 	public void actualizar(LineaJSON linea) {
 		// TODO Auto-generated method stub
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 		
-		String nombreBaseDatos="LineaDB";
-		MongoDatabase baseDatosMongDB= mongoClient.getDatabase(nombreBaseDatos);
+		MongoCliente mongo = new MongoCliente();
 		
-		String nombreColeccion="LineaColeccion";
-		MongoCollection<Document> coleccionEmpleado = baseDatosMongDB.getCollection(nombreColeccion);
+		
+		MongoCollection<Document> coleccionEmpleado = mongo.getDocumento();
 		
 		BasicDBObject basicDBObject = new BasicDBObject("_id", linea.getCodigoLinea());
 		Document documentolinea =new Document("nombre_corto", linea.getNombreCorto())
@@ -70,13 +64,11 @@ public class LineaColorMongo implements IMongo{
 	}
 	public void borrar(int idlinea) {
 		// TODO Auto-generated method stub
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+	
+        MongoCliente mongo = new MongoCliente();
 		
-		String nombreBaseDatos="LineaDB";
-		MongoDatabase baseDatosMongDB= mongoClient.getDatabase(nombreBaseDatos);
 		
-		String nombreColeccion="LineaColeccion";
-		MongoCollection<Document> coleccionEmpleado = baseDatosMongDB.getCollection(nombreColeccion);
+		MongoCollection<Document> coleccionEmpleado = mongo.getDocumento();
 		
 		BasicDBObject filtroborrado = new BasicDBObject("_id", idlinea);
 		coleccionEmpleado.findOneAndDelete(filtroborrado);
@@ -115,13 +107,12 @@ public class LineaColorMongo implements IMongo{
 	public List<LineaJSON> consultarTodo() {
 		// TODO Auto-generated method stub
 		
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
+       MongoCliente mongo = new MongoCliente();
 		
-		String nombreBaseDatos="LineaDB";
-		MongoDatabase baseDatosMongDB= mongoClient.getDatabase(nombreBaseDatos);
 		
-		String nombreColeccion="LineaColeccion";
-		MongoCollection<Document> coleccionEmpleado = baseDatosMongDB.getCollection(nombreColeccion);
+		
+		MongoCollection<Document> coleccionEmpleado = mongo.getDocumento();
+		
 		
 		List<LineaJSON> lineas= new ArrayList<LineaJSON>();
 		
@@ -131,6 +122,7 @@ public class LineaColorMongo implements IMongo{
             Document docu = iteratorDocumentos.next();
             Document documento = (Document) docu.get("Color");
             LineaJSON linea = new LineaJSON();
+            
             linea.setCodigoLinea(docu.getInteger("_id"));
             linea.setNombreCorto(docu.getString("nombre_corto"));
             linea.setNombreLargo(docu.getString("nombre_largo"));

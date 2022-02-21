@@ -19,7 +19,7 @@ public class URLlinea {
 		LineaJSON[] listadelineas=null;
 		ObjectMapper omapper = new JsonMapper();
 		HttpClient httpclient = HttpClient.newHttpClient();
-		URI uri = URI.create("http://dam2.actividad.cf:55555/rest/lineas");
+		URI uri = URI.create(GestorConfiguracion.getInfoConfiguracion("lineasURL"));
 		HttpRequest httprequest = HttpRequest.newBuilder().uri(uri).GET().build();
 		
 		try {
@@ -38,7 +38,7 @@ public LineaJSON cogerLineaXML() {
 		LineaJSON listadelineas=null;
 		ObjectMapper omapper = new XmlMapper();
 		HttpClient httpclient = HttpClient.newHttpClient();
-		URI uri = URI.create("http://dam2.actividad.cf:55555/rest/lineas/4");
+		URI uri = URI.create(GestorConfiguracion.getInfoConfiguracion("lineaURL"));
 		HttpRequest httprequest = HttpRequest.newBuilder().uri(uri).GET().build();
 		
 		try {

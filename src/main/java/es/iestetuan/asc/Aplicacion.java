@@ -53,10 +53,10 @@ public class Aplicacion {
 		System.out.println(linea);
 		
 		//lista
-//		List<LineaJSON> lista= metodos.consultarTodo();
-//		for(LineaJSON i : lista) {
-//			System.out.println(i);
-//		}
+		List<LineaJSON> lista= metodos.consultarTodo();
+		for(LineaJSON i : lista) {
+			System.out.println(i);
+		}
 	}
 
 }
