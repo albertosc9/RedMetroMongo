@@ -1,4 +1,4 @@
-package es.iestetuan.asc.dao.procesar;
+package es.iestetuan.asc.vo.mongo;
 
 import java.io.Serializable;
 

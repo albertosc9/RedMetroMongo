@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-import es.iestetuan.asc.dao.procesar.LineaJSON;
+import es.iestetuan.asc.vo.mongo.LineaJSON;
 
 public class URLlinea {
 

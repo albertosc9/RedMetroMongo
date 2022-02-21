@@ -2,8 +2,8 @@ package es.iestetuan.asc.dao;
 
 import java.util.List;
 
-import es.iestetuan.asc.dao.procesar.LineaJSON;
 import es.iestetuan.asc.dao.vo.Linea;
+import es.iestetuan.asc.vo.mongo.LineaJSON;
 
 public interface IMongo {
 

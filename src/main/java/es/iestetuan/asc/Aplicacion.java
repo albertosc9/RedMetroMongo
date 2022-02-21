@@ -11,9 +11,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import es.iestetuan.asc.dao.mongo.LineaColorMongo;
-import es.iestetuan.asc.dao.procesar.ColorJSON;
-import es.iestetuan.asc.dao.procesar.LineaJSON;
 import es.iestetuan.asc.dao.utilities.URLlinea;
+import es.iestetuan.asc.vo.mongo.ColorJSON;
+import es.iestetuan.asc.vo.mongo.LineaJSON;
 
 public class Aplicacion {
 
@@ -32,12 +32,12 @@ public class Aplicacion {
 			
 		
 		
-		//crear
-//		for(LineaJSON i : lineas) {
-//			
-//			metodos.crear(i);
-//			
-//		}
+		/*crear
+		for(LineaJSON i : lineas) {
+			
+			metodos.crear(i);
+			
+		}*/
 		
 		//borrar
 //		metodos.borrar(5);
@@ -48,9 +48,9 @@ public class Aplicacion {
 //		lineaconsulta.setKilometros(lineas1.getKilometros());
 //		metodos.actualizar(lineaconsulta);
 		
-		//buscar
-//		LineaJSON linea = metodos.consultar(8);
-//		System.out.println(linea);
+//		buscar
+		LineaJSON linea = metodos.consultar(8);
+		System.out.println(linea);
 		
 		//lista
 //		List<LineaJSON> lista= metodos.consultarTodo();

@@ -1,6 +1,6 @@
 package es.iestetuan.asc.dao.vo;
 
-import es.iestetuan.asc.dao.procesar.ColorJSON;
+import es.iestetuan.asc.vo.mongo.ColorJSON;
 
 public class Linea {
 

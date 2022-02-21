@@ -13,8 +13,9 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import es.iestetuan.asc.dao.IMongo;
-import es.iestetuan.asc.dao.procesar.ColorJSON;
-import es.iestetuan.asc.dao.procesar.LineaJSON;
+import es.iestetuan.asc.dao.utilities.MongoCliente;
+import es.iestetuan.asc.vo.mongo.ColorJSON;
+import es.iestetuan.asc.vo.mongo.LineaJSON;
 
 
 public class LineaColorMongo implements IMongo{
@@ -83,13 +84,13 @@ public class LineaColorMongo implements IMongo{
 	}
 	public LineaJSON consultar(int idlinea) {
 		// TODO Auto-generated method stub
-		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 		
-		String nombreBaseDatos="LineaDB";
-		MongoDatabase baseDatosMongDB= mongoClient.getDatabase(nombreBaseDatos);
+		MongoCliente mongo = new MongoCliente();
 		
-		String nombreColeccion="LineaColeccion";
-		MongoCollection<Document> coleccionEmpleado = baseDatosMongDB.getCollection(nombreColeccion);
+		
+		
+		MongoCollection<Document> coleccionEmpleado = mongo.getDocumento();
+		
 		
 		BasicDBObject filtroConsulta = new BasicDBObject("_id",idlinea);
         Document documentoConsulta = coleccionEmpleado.find(filtroConsulta).first();
